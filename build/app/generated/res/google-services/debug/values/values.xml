@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">579217617448-298mgo8sh6nvcgg0opjfs3q9nms282km.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://dulich-3ea74-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">579217617448</string>
+    <string name="google_api_key" translatable="false">AIzaSyDS12QyNMbrEwvstPDUQPW1aX_N2XfFJIY</string>
+    <string name="google_app_id" translatable="false">1:579217617448:android:9142cfcb180326831c7b1d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDS12QyNMbrEwvstPDUQPW1aX_N2XfFJIY</string>
+    <string name="google_storage_bucket" translatable="false">dulich-3ea74.appspot.com</string>
+    <string name="project_id" translatable="false">dulich-3ea74</string>
+</resources>

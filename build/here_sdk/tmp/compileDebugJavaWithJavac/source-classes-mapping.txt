@@ -1,0 +1,2 @@
+com/here/here_sdk/BuildConfig.java
+ com.here.here_sdk.BuildConfig
