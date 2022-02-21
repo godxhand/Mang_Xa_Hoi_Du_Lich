@@ -35,7 +35,7 @@ class DetailKhachSanState extends State<DetailKhachSan> {
                     GFImageOverlay(
                       height: 250,
                       width: 400,
-                      image: NetworkImage(UrlServer + ks.hinhanh),
+                      image: NetworkImage(URlquanan + ks.hinhanh),
                       colorFilter: new ColorFilter.mode(
                           Colors.black.withOpacity(0.3), BlendMode.dst),
                     ),

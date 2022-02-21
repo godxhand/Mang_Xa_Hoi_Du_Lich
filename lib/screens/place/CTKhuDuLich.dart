@@ -38,15 +38,15 @@ class CTKhuDuLichState extends State<CTKhuDuLich> {
                   child: Text('Error:\n ${snapshot.error}'),
                 );
               } else if (snapshot.hasData) {
-                List<QuanAnObject> qa = snapshot.data!.quanan.toList();
-                List<KhachSanObject> ks = snapshot.data!.khachsan.toList();
-                List<DichVuObject> dv = snapshot.data!.dichvu.toList();
+                List<QuanAnObject> qa = snapshot.data!.quanan!.toList();
+                List<KhachSanObject> ks = snapshot.data!.khachsan!.toList();
+                List<DichVuObject> dv = snapshot.data!.dichvu!.toList();
                 return SingleChildScrollView(
                     child: Column(children: <Widget>[
                       GFImageOverlay(
                         height: 250,
                         width: 400,
-                        image: NetworkImage(URLthanhpho+snapshot.data!.hinhanh),
+                        image: NetworkImage(URLthanhpho + snapshot.data!.hinhanh),
                         colorFilter: new ColorFilter.mode(
                             Colors.black.withOpacity(0.3), BlendMode.dst),
                       ),
@@ -58,137 +58,159 @@ class CTKhuDuLichState extends State<CTKhuDuLich> {
                           ),
                           color: Colors.orangeAccent,
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => DetailPlace(snapshot.data!.id_diadiem)));
-                          },),
-                        //                       Text(snapshot.data!.mota),
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DetailPlace(snapshot.data!.id)));
+                            },
+                        ),
                         ReadMoreText(
                           snapshot.data!.mota,
                           style: TextStyle(color: Colors.black),
                           trimCollapsedText: 'xem them',
                           trimExpandedText: 'thu gon',
                         ),
-                        Text('Dich Vu: ',
+                        Text(
+                          'Dich Vu: ',
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 20,
-                          ),),
-                        Container(
-                          height: 300,
-                          child:ListView.builder(
-                            // itemCount: qa.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Container(
-                              child:  InkWell(
-                                child: SingleChildScrollView(
-                                  padding: EdgeInsets.all(10),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(3),
-                                        child: GFImageOverlay(
-                                          height: 250,
-                                          width: 300,
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                                          image: NetworkImage(URldichvu+dv[index].hinhanh),
-                                          colorFilter: new ColorFilter.mode(
-                                              Colors.black.withOpacity(0.3), BlendMode.darken),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context, MaterialPageRoute(builder: (context) => DetailDichVu()));
-                                },
-                              ),
-                            ),
                           ),
                         ),
-                        Text('Khach San:',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                          ),),
                         Container(
-                          height: 300,
-                          child:ListView.builder(
-                            // itemCount: qa.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Container(
-                              child:  InkWell(
-                                child: SingleChildScrollView(
-                                  padding: EdgeInsets.all(10),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(3),
-                                        child: GFImageOverlay(
-                                          height: 250,
-                                          width: 300,
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                                          image: NetworkImage(URlkhachsan+ks[index].hinhanh),
-                                          colorFilter: new ColorFilter.mode(
-                                              Colors.black.withOpacity(0.3), BlendMode.darken),
-                                        ),
-                                      ),
-                                    ],
+                      height: 300,
+                      child: ListView.builder(
+                        itemCount: dv.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Container(
+                          child: InkWell(
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.all(10),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: GFImageOverlay(
+                                      height: 250,
+                                      width: 300,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image: NetworkImage(
+                                          URldichvu + dv[index].hinhanh),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                    ),
                                   ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context, MaterialPageRoute(builder: (context) => DetailKhachSan(ks[index].id)));
-                                },
+                                ],
                               ),
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailDichVu(dv[index].id)));
+                            },
                           ),
                         ),
-                        Text('Quan An: ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                          ),),
+                      ),
+                    ),
+                        Text(
+                      'Khach San:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
+                    ),
                         Container(
-                          height: 300,
-                          child:ListView.builder(
-                            // itemCount: qa.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Container(
-                              child:  InkWell(
-                                child: SingleChildScrollView(
-                                  padding: EdgeInsets.all(10),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(3),
-                                        child: GFImageOverlay(
-                                          height: 250,
-                                          width: 300,
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                                          image: NetworkImage(URlquanan+qa[index].hinhanh),
-                                          colorFilter: new ColorFilter.mode(
-                                              Colors.black.withOpacity(0.3), BlendMode.darken),
-                                        ),
-                                      ),
-                                    ],
+                      height: 300,
+                      child: ListView.builder(
+                        itemCount: ks.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Container(
+                          child: InkWell(
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.all(10),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: GFImageOverlay(
+                                      height: 250,
+                                      width: 300,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image: NetworkImage(
+                                          URlkhachsan + ks[index].hinhanh),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                    ),
                                   ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context, MaterialPageRoute(builder: (context) => DetailQuanAn(qa[index].id)));
-                                },
+                                ],
                               ),
                             ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailKhachSan(ks[index].id)));
+                            },
                           ),
                         ),
-                      ])
-
-                    ])
-                );
+                      ),
+                    ),
+                        Text(
+                      'Quan An: ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
+                    ),
+                        Container(
+                          height: 300,
+                          child: ListView.builder(
+                            itemCount: qa.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) => Container(
+                              child: InkWell(
+                                child: SingleChildScrollView(
+                                  padding: EdgeInsets.all(10),
+                                  child: Row(children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: GFImageOverlay(
+                                      height: 250,
+                                      width: 300,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image: NetworkImage(
+                                          URlquanan + qa[index].hinhanh),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailQuanAn(qa[index].id)));
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ])
+                ]));
               }
               return Center();
-            })
-    );
+            }));
   }
 }

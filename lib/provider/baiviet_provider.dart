@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:doan2/model/baivietObject.dart';
 import 'package:http/http.dart' as http;
-
 import 'URL.dart';
 
 

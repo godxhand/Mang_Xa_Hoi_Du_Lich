@@ -1,52 +1,38 @@
 import 'dart:io';
 import 'package:doan2/model/UserObject.dart';
+import 'package:doan2/provider/URL.dart';
 import 'package:doan2/provider/baiviet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:doan2/theme/colors/light_colors.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:getwidget/components/carousel/gf_items_carousel.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/src/base_response.dart';
 class CreatePost extends StatefulWidget {
-  final UserObject user;
-  const CreatePost({Key? key, required this.user}) : super(key: key);
+  // final UserObject user;
+  // const CreatePost({Key? key, required this.user}) : super(key: key);
   @override
-  createpost createState() => createpost( user: user);
+  createpost createState() => createpost();
 }
 
 class createpost extends State<CreatePost> {
-  final UserObject user;
-
-  createpost({ required this.user});
-
   final TextEditingController txtNoiDung = TextEditingController();
-  final picker = ImagePicker();
-  var _image;
-  int idUser = 0;
-  bool isPost = false;
+  final ImagePicker _picker = ImagePicker();
+  XFile? image;
 
-  Future pickerImage() async {
-    var pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {});
-      _image = File(pickedFile.path);
-      isPost = true;
-    } else {
-      const snackBar = SnackBar(content: Text('Chưa chọn ảnh'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
+  void filePicker() async {
+    final XFile? SelectImage = await _picker.pickImage(source: ImageSource.gallery);
+    print(SelectImage!.path);
+    setState(() {
+      image = SelectImage;
+    });
   }
-
-  _createPost() async {
-    bool isSuccess = await BaiVietProvider.createpost(
-        _image,  user.id.toString(), txtNoiDung.text);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   filePicker();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +53,8 @@ class createpost extends State<CreatePost> {
                 color: Colors.black,
               ),
             ),
-
             ElevatedButton(
-                onPressed: _createPost(),
+                onPressed: () {},
                 child: Text(
                   'Đăng',
                   style: TextStyle(color: Colors.black),
@@ -78,17 +63,19 @@ class createpost extends State<CreatePost> {
         ),
       ),
       body: Container(
+        width: 800,
         margin: EdgeInsets.all(10),
         child: Column(
           children: [
             Row(
               children: const [
                 CircleAvatar(
-                  child: Text("HN"),),
+                  child: Text("HN"),
+                ),
                 SizedBox(width: 8),
                 Text("Khanh Sang"),
-
-              ],),
+              ],
+            ),
             TextField(
               controller: txtNoiDung,
               keyboardType: TextInputType.multiline,
@@ -98,22 +85,27 @@ class createpost extends State<CreatePost> {
                 hintText: 'Chia Sẽ Cảm nhân của bạn ',
               ),
             ),
-            // GFItemsCarousel(rowCount: 2,chilđren: ,),
-          ],),
+            image == null ? Text("No Image"): Image.file(File(image!.path),
+              width: 150,
+              fit: BoxFit.cover,
+            )
+          ],
+        ),
       ),
-
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         children: [
           SpeedDialChild(
             child: Icon(Icons.add_photo_alternate),
             label: 'Photo/Video',
-            onTap:  pickerImage,
+            onTap: (){
+              filePicker();
+            },
           ),
           SpeedDialChild(
             child: Icon(Icons.location_on),
             label: 'checkIn',
-            onTap:(){},
+            onTap: () {},
           ),
           SpeedDialChild(
             child: Icon(Icons.location_city),

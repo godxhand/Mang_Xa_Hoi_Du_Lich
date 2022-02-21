@@ -12,22 +12,16 @@ class DiaDiemObject {
   final String hinhanh;
   final int trangthai;
 
-  DiaDiemObject(
-      this.id,
-      this.tendiadiem,
-      this.hinhanh,
-      this.kinhdo,
-      this.vido,
-      this.mota,
-      this.trangthai);
+  DiaDiemObject(this.id, this.tendiadiem, this.hinhanh, this.kinhdo, this.vido,
+      this.mota, this.trangthai);
 
   DiaDiemObject.fromJson(Map<String, dynamic> dd)
       : id = dd["id"],
-        tendiadiem = dd["tendiadiem"],
+        tendiadiem = dd["tenthanhpho"],
         hinhanh = dd["hinhanh"],
         kinhdo = dd["kinhdo"],
         vido = dd["vido"],
-        mota = dd["mieuta"],
+        mota = dd["mota"],
         trangthai = dd["trangthai"];
 
   // DiaDiemObject.fromJson2(Map<String, dynamic> dd)

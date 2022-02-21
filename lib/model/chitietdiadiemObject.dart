@@ -11,36 +11,31 @@ class CTDiadiemObject {
   // final List<QuanAnObject> quanan;
   final int id;
   final String tendiadiem;
-  final String kinhdo;
-  final String vido;
   final String mota;
   final String hinhanh;
   final int trangthai;
   final List<KhudulichObject> khudulich;
 
   CTDiadiemObject(
-  this.id,
-  this.tendiadiem,
-  this.hinhanh,
-  this.kinhdo,
-  this.vido,
-  this.mota,
-  this.trangthai,
+      this.id,
+      this.tendiadiem,
+      this.hinhanh,
+      this.mota,
+      this.trangthai,
 //      this.dichvu,
 //       this.khachsan,
 //       this.quanan
-  this.khudulich
-      );
+      this.khudulich);
 
   CTDiadiemObject.fromJson(Map<String, dynamic> dd)
       : id = dd["id"],
-        tendiadiem = dd["tendiadiem"],
+        tendiadiem = dd["tenthanhpho"],
         hinhanh = dd["hinhanh"],
-        kinhdo = dd["kinhdo"],
-        vido = dd["vido"],
-        mota = dd["mieuta"],
+        mota = dd["mota"],
         trangthai = dd["trangthai"],
-      khudulich= dd["diadiem"].map<KhudulichObject>((e) => KhudulichObject.fromJson(e)).toList();
+        khudulich = dd["diadiem"]
+            .map<KhudulichObject>((e) => KhudulichObject.fromJson(e))
+            .toList();
   //       dichvu = dd["dichvu"].map<DichVuObject>((e) =>
   // DichVuObject.fromJson(e)).toList(),
   //       khachsan = dd["khachsan"].map<KhachSanObject>((e) =>

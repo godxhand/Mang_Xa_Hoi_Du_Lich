@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:doan2/model/UserObject.dart';
 import 'package:doan2/provider/user_provider.dart';
 import 'package:doan2/screens/home/Hearder.dart';
 import 'package:doan2/screens/home/Post.dart';
@@ -7,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:doan2/theme/colors/light_colors.dart';
 import 'package:doan2/widgets/task_column.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../account/account_page.dart';
 import 'package:doan2/widgets/top_container.dart';
 import '../place/place.dart';
@@ -21,12 +25,22 @@ class HomeTab extends StatefulWidget {
 }
 
 class HomeTabList extends State<HomeTab> {
-  void getuser() async{
-    final respone = UserProvider.getUser();
-  }
+//  final UserObject user;
+//   loaduser() async {
+//     final data = await UserProvider.get();
+//     setState(() {
+//       user = data;
+//     });
+//   }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   loaduser();
+  // }
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
       child: ListView(
         children: [
@@ -37,10 +51,8 @@ class HomeTabList extends State<HomeTab> {
               ),
               title: OutlinedButton(
                 onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => CreatePost(
-                  //       user: User.id,
-                  //     )));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CreatePost()));
                 },
                 child: Text('What your mind favorite',
                     style: TextStyle(color: Colors.black)),
@@ -53,7 +65,7 @@ class HomeTabList extends State<HomeTab> {
             ),
           ),
           Container(
-            height: 650,
+            height: 568,
             child: Post(),
           )
         ],
@@ -83,7 +95,7 @@ class DataState extends State<Home> {
     ),
     Material(
       child: Center(
-        child: Map(10.771595,106.6991629),
+        child: Map(10.771595, 106.6991629),
       ),
     )
   ];

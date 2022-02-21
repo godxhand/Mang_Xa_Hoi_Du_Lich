@@ -3,6 +3,7 @@ import 'package:doan2/model/baivietObject.dart';
 import 'package:doan2/provider/baiviet_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 class Post extends StatefulWidget{
   @override
@@ -15,7 +16,7 @@ class PostState extends State<Post>{
   List<BaivietObject> lsbaiviet = [];
   _loadbaiviet() async {
     final data = await BaiVietProvider.getall();
-    setState(() {     });
+    setState(() { });
     lsbaiviet = data;
   }
 
@@ -42,7 +43,9 @@ class PostState extends State<Post>{
                  leading: CircleAvatar(
                    child: Text('TL'),
                  ),
-                 title: Text(lsbaiviet[index].user.name),
+                 title: Text("Khanh Sang"
+  //                   lsbaiviet[index].user.name
+                 ),
                  subtitle: Align(
                    alignment: Alignment.centerLeft,
                    child: Icon(Icons.person_outline_sharp),
@@ -69,8 +72,11 @@ class PostState extends State<Post>{
                  width: double.infinity,
                  child: Padding(
                    padding: EdgeInsets.all(10),
-                   child: Text( lsbaiviet[index].noidung,
-                     softWrap: true,
+                   child: ReadMoreText(
+                     lsbaiviet[index].noidung,
+                     style: TextStyle(color: Colors.black),
+                     trimCollapsedText: 'xem them',
+                     trimExpandedText: 'thu gon',
                    ),
                  ),
                ),

@@ -37,7 +37,7 @@ class DetailQuanAnState extends State<DetailQuanAn> {
                     GFImageOverlay(
                       height: 250,
                       width: 400,
-                      image: NetworkImage(UrlServer + qa.hinhanh),
+                      image: NetworkImage(URlquanan + qa.hinhanh),
                       colorFilter: new ColorFilter.mode(
                           Colors.black.withOpacity(0.3), BlendMode.dst),
                     ),
@@ -67,6 +67,45 @@ class DetailQuanAnState extends State<DetailQuanAn> {
                         trimCollapsedText: 'xem them',
                         trimExpandedText: 'thu gon',
                       ),
+                      // Container(
+                      //   height: 300,
+                      //   child: ListView.builder(
+                      //     itemCount: qa.length,
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemBuilder: (context, index) => Container(
+                      //       child: InkWell(
+                      //         child: SingleChildScrollView(
+                      //           padding: EdgeInsets.all(10),
+                      //           child: Row(
+                      //             children: [
+                      //               Padding(
+                      //                 padding: EdgeInsets.all(3),
+                      //                 child: GFImageOverlay(
+                      //                   height: 250,
+                      //                   width: 300,
+                      //                   borderRadius:
+                      //                   BorderRadius.all(Radius.circular(10)),
+                      //                   image: NetworkImage(
+                      //                       URlkhachsan + ks[index].hinhanh),
+                      //                   colorFilter: new ColorFilter.mode(
+                      //                       Colors.black.withOpacity(0.3),
+                      //                       BlendMode.darken),
+                      //                 ),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         ),
+                      //         onTap: () {
+                      //           Navigator.push(
+                      //               context,
+                      //               MaterialPageRoute(
+                      //                   builder: (context) =>
+                      //                       DetailKhachSan(ks[index].id)));
+                      //         },
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ])
                   ]
                   )
