@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "579217617448",
+    "firebase_url": "https://dulich-3ea74-default-rtdb.firebaseio.com",
+    "project_id": "dulich-3ea74",
+    "storage_bucket": "dulich-3ea74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579217617448:android:9142cfcb180326831c7b1d",
+        "android_client_info": {
+          "package_name": "com.example.doan2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579217617448-298mgo8sh6nvcgg0opjfs3q9nms282km.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS12QyNMbrEwvstPDUQPW1aX_N2XfFJIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579217617448-298mgo8sh6nvcgg0opjfs3q9nms282km.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
