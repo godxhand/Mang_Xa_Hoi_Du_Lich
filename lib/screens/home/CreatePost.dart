@@ -23,7 +23,7 @@ class createpost extends State<CreatePost> {
 
   void filePicker() async {
     final XFile? SelectImage = await _picker.pickImage(source: ImageSource.gallery);
-    print(SelectImage!.path);
+   // print(SelectImage!.path);
     setState(() {
       image = SelectImage;
     });
