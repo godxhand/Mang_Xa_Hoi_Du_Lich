@@ -10,7 +10,7 @@ class DichVuProvider {
     return pased.map<DichVuObject>((e) => DichVuObject.fromJson(e)).toList();
   }
   static Future<DichVuObject> getid(int id) async {
-    final response = await http.get(Uri.parse(URLAPI+'dichvu'));
+    final response = await http.get(Uri.parse(URLAPI+'dichvu/$id'));
     return DichVuObject.fromJson(jsonDecode(response.body));
   }
 }

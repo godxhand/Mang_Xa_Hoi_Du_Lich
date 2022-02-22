@@ -1,7 +1,12 @@
 import 'dart:io';
 import 'package:doan2/model/UserObject.dart';
+import 'package:doan2/model/diadiemObject.dart';
 import 'package:doan2/provider/URL.dart';
 import 'package:doan2/provider/baiviet_provider.dart';
+import 'package:doan2/provider/user_provider.dart';
+import 'package:doan2/screens/home/DSDiadiem.dart';
+import 'package:doan2/screens/home/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:doan2/theme/colors/light_colors.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -11,28 +16,41 @@ import 'package:http/http.dart' as http;
 import 'package:http/src/base_response.dart';
 class CreatePost extends StatefulWidget {
   // final UserObject user;
-  // const CreatePost({Key? key, required this.user}) : super(key: key);
-  @override
-  createpost createState() => createpost();
+  int id_diadiem;
+  String tendiadiem;
+  CreatePost({Key? key,required this.id_diadiem, required this.tendiadiem}) : super(key: key);
+  createpost createState() => createpost(id_diadiem,tendiadiem);
 }
 
 class createpost extends State<CreatePost> {
+  String tendiadiem;
+  int id_diadiem;
+  createpost(this.id_diadiem,this.tendiadiem);
   final TextEditingController txtNoiDung = TextEditingController();
   final ImagePicker _picker = ImagePicker();
-  XFile? image;
-
+  var image;
   void filePicker() async {
     final XFile? SelectImage = await _picker.pickImage(source: ImageSource.gallery);
-   // print(SelectImage!.path);
+    // print(SelectImage!.path);
     setState(() {
-      image = SelectImage;
+      image = File(SelectImage!.path);
     });
+
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   filePicker();
-  // }
+  UploadPost() async{
+  final taobaiviet = await BaiVietProvider.createpost(
+      txtNoiDung.text,
+      id_diadiem.toString(),
+      '1',
+      image
+  );
+  if (taobaiviet == true) {
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     MaterialPageRoute(builder: (context)=>HomeTab()),
+    //         (Route<dynamic> route) => false);
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeTab()));
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +72,9 @@ class createpost extends State<CreatePost> {
               ),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  UploadPost();
+                },
                 child: Text(
                   'Đăng',
                   style: TextStyle(color: Colors.black),
@@ -62,36 +82,45 @@ class createpost extends State<CreatePost> {
           ],
         ),
       ),
-      body: Container(
-        width: 800,
-        margin: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Row(
-              children: const [
-                CircleAvatar(
-                  child: Text("HN"),
-                ),
-                SizedBox(width: 8),
-                Text("Khanh Sang"),
-              ],
-            ),
-            TextField(
-              controller: txtNoiDung,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Chia Sẽ Cảm nhân của bạn ',
+           body:  Container(
+                margin: EdgeInsets.all(10),
+                child: ListView(
+                  children:<Widget>[
+                    Container(
+                      child: FutureBuilder<UserObject>(
+                        future:UserProvider.get(),
+                        builder: (context, snapshot){
+                          if(snapshot.hasData){
+                            return ListTile(
+                              leading: CircleAvatar(
+                                child: Text('HN'),
+                              ),
+                              title: Text(snapshot.data!.name,
+                              ),
+                              subtitle: Text(tendiadiem),
+                            );
+                          }
+                          return Center();
+                        }
+                      ),
+                    ),
+                    TextField(
+                      controller: txtNoiDung,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Chia Sẽ Cảm nhân của bạn ',
+                      ),
+                    ),
+                    image == null ? Text("No Image"): Image.file(File(image!.path),
+                      width: 150,
+                      fit: BoxFit.cover,),
+                  ],),
               ),
-            ),
-            image == null ? Text("No Image"): Image.file(File(image!.path),
-              width: 150,
-              fit: BoxFit.cover,
-            )
-          ],
-        ),
-      ),
+          //  }
+          //   return Center();
+          // }
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         children: [
@@ -110,6 +139,9 @@ class createpost extends State<CreatePost> {
           SpeedDialChild(
             child: Icon(Icons.location_city),
             label: 'Địa điểm',
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>DSDiaDiem() ));
+            },
           ),
         ],
       ),

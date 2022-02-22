@@ -16,7 +16,7 @@ class BaiVietProvider {
   }
 
   static Future<bool> createpost(
-      File _image, String idUser, String noidung) async {
+       String noidung,String idDiaDiem, String idUser,File _image) async {
     //var token = await UserProvider.getToken();
     var stream = http.ByteStream(_image.openRead());
     stream.cast();
@@ -26,11 +26,12 @@ class BaiVietProvider {
     var uri = Uri.parse(URLAPI + "baiviet/create");
     var request = http.MultipartRequest("POST", uri);
     // request.headers.addAll(headers);
-    request.fields["idUser"] = idUser;
-    request.fields["noiDung"] = noidung;
+    request.fields["id_nguoidung"] = idUser;
+    request.fields["noidung"] = noidung;
+    request.fields["id_diadiem"]= idDiaDiem;
 
     var multiport =
-    http.MultipartFile("hinhAnh", stream, length, filename: _image.path);
+    http.MultipartFile("hinhanh", stream, length, filename: _image.path);
 
     request.files.add(multiport);
     var response = await request.send();

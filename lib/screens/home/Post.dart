@@ -43,13 +43,9 @@ class PostState extends State<Post>{
                  leading: CircleAvatar(
                    child: Text('TL'),
                  ),
-                 title: Text("Khanh Sang"
-  //                   lsbaiviet[index].user.name
+                 title: Text(lsbaiviet[index].user.name
                  ),
-                 subtitle: Align(
-                   alignment: Alignment.centerLeft,
-                   child: Icon(Icons.person_outline_sharp),
-                 ),
+                 subtitle: Text(lsbaiviet[index].diadiem.tendiadiem,),
                  trailing: PopupMenuButton(
                    icon: Icon(Icons.more_horiz),
                    itemBuilder: (context) => [

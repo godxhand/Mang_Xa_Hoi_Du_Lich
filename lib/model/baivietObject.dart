@@ -12,9 +12,10 @@ class BaivietObject {
   int dislike;
   int view;
   int trangthai;
-  int iddiadiem;
+  // int iddiadiem;
   // int idnguoidung;
-// UserObject  user;
+  UserObject  user;
+  DiaDiemObject diadiem;
 
   BaivietObject(
     this.id,
@@ -23,9 +24,10 @@ class BaivietObject {
     this.dislike,
     this.view,
     this.trangthai,
-    this.iddiadiem,
+    // this.iddiadiem,
     // this.idnguoidung,
-    //     this.user
+        this.user,
+      this.diadiem
   );
 
   BaivietObject.fromJson(Map<String, dynamic> bv)
@@ -35,9 +37,10 @@ class BaivietObject {
         dislike = bv["dislike"],
         view = bv["view"],
         trangthai = bv["trangthai"],
-        iddiadiem = bv["id_diadiem"]
+        // iddiadiem = bv["id_diadiem"],
   // idnguoidung = bv["id_nguoidung"],
   //user = UserObject.fromJson(bv["User"])
-  //    user = bv["User"].map<UserObject>((e) => UserObject.fromJson(e)).toList()[0]
-  ;
+        user = bv["id_nguoidung"].map<UserObject>((e) => UserObject.fromJson(e)).toList()[0],
+        diadiem  =bv ["id_diadiem"].map<DiaDiemObject>((e)=>DiaDiemObject.fromJson(e)).toList()[0]
+    ;
 }

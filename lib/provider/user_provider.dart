@@ -11,8 +11,8 @@ class UserProvider {
     final pased = jsonDecode(reponseBody).cast<Map<String, dynamic>>();
     return pased.map<UserObject>((e) => UserObject.fromJson(e)).toList();
   }
-  static Future<UserObject> get() async{
-    final response = await http.get(Uri.parse(URLAPI + 'user/show/1'));
+  static Future <UserObject> get() async{
+    final response = await http.get(Uri.parse(URLAPI + 'user/1'));
     return UserObject.fromJson(jsonDecode(response.body));
   }
 

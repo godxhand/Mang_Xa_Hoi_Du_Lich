@@ -52,7 +52,7 @@ class HomeTabList extends State<HomeTab> {
               title: OutlinedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CreatePost()));
+                      MaterialPageRoute(builder: (context) => CreatePost(id_diadiem: 0,tendiadiem:" ",)));
                 },
                 child: Text('What your mind favorite',
                     style: TextStyle(color: Colors.black)),
@@ -65,7 +65,7 @@ class HomeTabList extends State<HomeTab> {
             ),
           ),
           Container(
-            height: 568,
+            height: 630,
             child: Post(),
           )
         ],

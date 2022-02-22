@@ -1,4 +1,4 @@
-const UrlServer = "http://192.168.1.7:8000/";
+const UrlServer = "http://192.168.1.142:8000/";
 const URLAPI = UrlServer+"api/";
 const URLthanhpho = UrlServer+"public/upload/thanhpho/";
 const URldiadiem =  UrlServer+"public/upload/diadiem/";
