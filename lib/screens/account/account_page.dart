@@ -20,15 +20,14 @@ class _AccountPageState extends State<AccountPage> {
     super.initState();
     _onShowMenu = () {
       context.showBottomSheet([
-        BottomSheetAction(iconData: Icons.archive, title: 'Archive', id: 1),
-        BottomSheetAction(iconData: Icons.show_chart, title: 'Insights', id: 2),
-        BottomSheetAction(
-            iconData: Icons.history, title: 'Your activity', id: 3),
-        BottomSheetAction(iconData: Icons.scanner, title: 'QR Code', id: 4),
-        BottomSheetAction(
-            iconData: Icons.bookmark_border, title: 'Saved', id: 5),
-        BottomSheetAction(
-            iconData: Icons.group_add, title: 'Discover People', id: 6),
+        // BottomSheetAction(iconData: Icons.archive, title: 'Archive', id: 1),
+        // BottomSheetAction(iconData: Icons.show_chart, title: 'Insights', id: 2),
+        // BottomSheetAction(iconData: Icons.history, title: 'Your activity', id: 3),
+        // BottomSheetAction(iconData: Icons.scanner, title: 'QR Code', id: 4),
+        // BottomSheetAction(iconData: Icons.bookmark_border, title: 'Saved', id: 5),
+        BottomSheetAction(iconData: Icons.group_add, title: 'Discover People', id: 1),
+        BottomSheetAction(iconData: Icons.logout, title: 'Log out', id: 2),
+
       ]);
     };
   }

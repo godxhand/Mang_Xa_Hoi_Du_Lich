@@ -10,7 +10,7 @@ class KhachSanProvider {
     return pased.map<KhachSanObject>((e) => KhachSanObject.fromJson(e)).toList();
   }
   static Future<KhachSanObject> getid(int id) async {
-    final response = await http.get(Uri.parse(URLAPI+'khachsan/$id'));
+    final response = await http.get(Uri.parse(URLAPI+'khachsan/show/$id'));
     return KhachSanObject.fromJson(jsonDecode(response.body));
   }
 }

@@ -1,3 +1,4 @@
+import 'package:doan2/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:doan2/screens/account/app_context.dart';
 import 'package:doan2/screens/account/bottomsheet/bottom_sheet_action.dart';
@@ -9,6 +10,9 @@ class BottomSheetActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _logout() async{
+    final reponse = await UserProvider.logout();
+    }
     return InkWell(
       highlightColor: Colors.blue.withOpacity(0.1),
       splashColor: Colors.blue.withOpacity(0.3),
@@ -28,6 +32,7 @@ class BottomSheetActionWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
+        _logout();
         Navigator.pop(context, action);
       },
     );

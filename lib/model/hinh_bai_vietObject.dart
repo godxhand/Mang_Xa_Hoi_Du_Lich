@@ -3,7 +3,7 @@ import 'package:doan2/model/baivietObject.dart';
 class HinhBaiVietObject {
   final int id;
   final String nguon;
-  final BaivietObject id_hinh_anh;
+  final int id_hinh_anh;
   final int trangthai;
 
   HinhBaiVietObject(this.id,this.nguon,this.id_hinh_anh,this.trangthai);

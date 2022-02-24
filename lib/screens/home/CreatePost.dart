@@ -45,10 +45,10 @@ class createpost extends State<CreatePost> {
       image
   );
   if (taobaiviet == true) {
-    // Navigator.of(context).pushAndRemoveUntil(
-    //     MaterialPageRoute(builder: (context)=>HomeTab()),
-    //         (Route<dynamic> route) => false);
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeTab()));
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context)=>HomeTab()),
+            (Route<dynamic> route) => false);
+    // Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeTab()));
   }
 }
   @override
@@ -113,7 +113,7 @@ class createpost extends State<CreatePost> {
                         hintText: 'Chia Sẽ Cảm nhân của bạn ',
                       ),
                     ),
-                    image == null ? Text("No Image"): Image.file(File(image!.path),
+                    image == null ? Text(""): Image.file(File(image!.path),
                       width: 150,
                       fit: BoxFit.cover,),
                   ],),

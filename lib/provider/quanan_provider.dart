@@ -9,7 +9,7 @@ class QuanAnProvider {
     return pased.map<QuanAnObject>((e) => QuanAnObject.fromJson(e)).toList();
   }
   static Future<QuanAnObject> getid(int id) async {
-    final response = await http.get(Uri.parse(URLAPI+'quanan/$id'));
+    final response = await http.get(Uri.parse(URLAPI+'quanan/show/$id'));
     return QuanAnObject.fromJson(jsonDecode(response.body));
   }
 }

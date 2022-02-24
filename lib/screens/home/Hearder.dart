@@ -21,7 +21,8 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                 style: TextStyle(
                   fontSize: 24,
                 ),
-              )),
+              ),
+              ),
               IconButton(
                   icon: Icon(
                     Icons.search_sharp,

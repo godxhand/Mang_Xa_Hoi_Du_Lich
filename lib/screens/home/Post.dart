@@ -14,6 +14,7 @@ class Post extends StatefulWidget{
 
 class PostState extends State<Post>{
   List<BaivietObject> lsbaiviet = [];
+  bool _loading= true;
   _loadbaiviet() async {
     final data = await BaiVietProvider.getall();
     setState(() { });
@@ -24,6 +25,7 @@ class PostState extends State<Post>{
   void initState() {
     super.initState();
     _loadbaiviet();
+
   }
   @override
   Widget build(BuildContext context) {

@@ -23,7 +23,12 @@ class UserProvider {
         body: ({
           'email': email,
           'password': password,
-        }));
+        }),headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+          'X-Requested-With': 'XMLHttpRequest',
+          'Client-secret': 'qfYjiotdmTRKfLyi1kcMsVZw9V5bzV2vuFkeMqZ3',
+          'Accept':'application/json',
+        });
     final jsonRespon = jsonDecode(response.body);
     if (jsonRespon["status_code"] == 200) {
       /* ==== Lưu trữ token vào Storage ==== */
@@ -66,8 +71,10 @@ class UserProvider {
           'password_confirmation': password_confirmation
         }),
         headers: {
-          'Content-type': 'application/json',
+          'Content-type': 'application/x-www-form-urlencoded',
           'X-Request-With':'XMLHttpRequets',
+          'Client-secret': 'qfYjiotdmTRKfLyi1kcMsVZw9V5bzV2vuFkeMqZ3',
+
         });
     final jsonRespon = jsonDecode(response.body);
 

@@ -30,13 +30,10 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'dangngocduc',
-                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                    'Knight',
+                    style: TextStyle(
+                      fontSize: 24,),
                   ),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 16,
-                  )
                 ],
               ),
             ),

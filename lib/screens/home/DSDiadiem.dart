@@ -33,11 +33,12 @@ class DSDiaDiemState extends State<DSDiaDiem> {
             child: Row(
               children: <Widget>[
                TextButton(onPressed: (){
-                  Navigator.push(context,
+                  Navigator.pushAndRemoveUntil(context,
                       MaterialPageRoute(builder: (context)=> CreatePost(
-                        id_diadiem: lsdiadiem[index].id,
-                        tendiadiem: lsdiadiem[index].tendiadiem,))
-                  );
+                    id_diadiem: lsdiadiem[index].id,
+                    tendiadiem: lsdiadiem[index].tendiadiem,))
+                      , (route) => false);
+                      // context,
                 },
                   child: Text(lsdiadiem[index].tendiadiem),
                 ),

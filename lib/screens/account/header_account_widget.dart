@@ -1,3 +1,5 @@
+import 'package:doan2/model/UserObject.dart';
+import 'package:doan2/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
@@ -31,12 +33,21 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     BigAvatarUserWidget(),
+                    // FutureBuilder<UserObject>(
+                    //   future: UserProvider.getUser(),
+                    //   builder: (context,snapshot){
+                    //     if(snapshot.hasData){
+                    //       return Text(snapshot.data!.name,
+                    //         // style: Theme.of(context).textTheme.bodyText2,
+                    //       );
+                    //     }
+                    //     return Center();
+                    //   },
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(top: 8),
-                      child: Text(
-                        'Đặng Ngọc Đức',
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
+                     child: Text("Ten User",
+                    style: Theme.of(context).textTheme.bodyText2,),
                     )
                   ],
                 ),
@@ -47,12 +58,12 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
                     children: <Widget>[
                       Expanded(
                           child: MenuItemWidget(
-                        title: '146',
+                        title: '0',
                         content: 'like',
                       )),
                       Expanded(
                           child: MenuItemWidget(
-                        title: '130',
+                        title: '0',
                         content: 'dislike',
                       )),
                     ],
@@ -77,9 +88,11 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
             child: OutlineButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4))),
-              onPressed: () {},
+              onPressed: () {
+
+              },
               child: Text(
-                'Edit Profile',
+                'Profile User',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
             ),

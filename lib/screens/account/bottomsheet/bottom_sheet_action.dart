@@ -13,5 +13,6 @@ class BottomSheetAction {
     required this.iconData,
     required this.title,
     required this.id,
+
   });
 }
